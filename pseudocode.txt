@@ -1,0 +1,12 @@
+//PSUEDOCODE
+
+// 1. Turn array of topics into buttons
+// 2. Add function to the buttons
+// 3. Take user input and turn into a variable
+
+
+// each button will have a data-type
+// array name is the data-type
+// on click - pull data type and that data type will be inserted into the query url base
+// the api will limit the number of gifs pulled, no for loop needed
+//

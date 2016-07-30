@@ -1,0 +1,23 @@
+#searchTerm {
+
+}
+
+.letter {
+  padding:5px;
+  margin: 5px;
+}
+#searchForm {
+  padding:10px;
+  margin: 20px;
+}
+
+#buttons {
+  padding: 20px;
+  margin: 30px;
+}
+
+#gifsAppearHere {
+  padding: 20px;
+  margin: 30px;
+  background-color: #e95420;
+}
