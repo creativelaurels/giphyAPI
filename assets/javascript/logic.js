@@ -9,9 +9,9 @@ var queryURLBase = "http://api.giphy.com/v1/gifs/search?q=";
 //Sconsole.log("Query URL:" + queryURL);
 
 // FUNCTIONS
-//===============
+// ===============
 
-// Create buttons from the topics array
+//Create buttons from the topics array
 for (var i = 0; i < topics.length; i++) {
     var b = $('<button>');
     b.addClass('letter');
@@ -69,6 +69,16 @@ $("#runSearch").on("click", function(){
       // stores the user's search term as a variable and trims any whitespace
       searchTerm = $("#searchTerm").val().trim();
       console.log("Search Term: " + searchTerm);
+
+      //push users term into array
+      topics.push(searchTerm);
+      console.log(topics);
+
+          // push the buttons to the div
+          b.addClass('letter');
+          b.attr('data-type', topics[i]);
+          b.text(topics[i]);
+          $("#buttons").append(b);
 
       return false;
     })
