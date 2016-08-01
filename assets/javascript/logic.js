@@ -15,7 +15,9 @@ var queryURLBase = "http://api.giphy.com/v1/gifs/search?q=";
 for (var i = 0; i < topics.length; i++) {
     var b = $('<button>');
     b.addClass('letter');
-    b.attr('data-type', topics[i]);
+    b.addClass('button');
+    var plusTitles = topics[i].split(' ').join('+');
+    b.attr('data-type', plusTitles).append(topics[i]);
     b.text(topics[i]);
 
     // push the buttons to the div
@@ -74,7 +76,7 @@ $("#runSearch").on("click", function(){
       topics.push(searchTerm);
       console.log(topics);
 
-          // push the buttons to the div
+          // push the new buttons to the div
           b.addClass('letter');
           b.attr('data-type', topics[i]);
           b.text(topics[i]);
