@@ -12,27 +12,32 @@ var queryURLBase = "http://api.giphy.com/v1/gifs/search?q=";
 // ===============
 
 //Create buttons from the topics array
-for (var i = 0; i < topics.length; i++) {
-    var b = $('<button>');
-    b.addClass('btn-style');
-    b.addClass('button');
+var buttonMaker = function() {
+    for (var i = 0; i < topics.length; i++) {
+        var b = $('<button>');
+        b.addClass('btn-style');
+        b.addClass('button');
 
-    var plusTitles = topics[i].split(' ').join('+');
-    b.attr('data-type', plusTitles).append(topics[i]);
+        // if user puts in two word search
+        var plusTitles = topics[i].split(' ').join('+');
+        b.attr('data-type', plusTitles).append(topics[i]);
 
-    b.text(topics[i]);
+        b.text(topics[i]);
 
-    // push the buttons to the div
-    $("#buttonDiv").append(b);
-};
+        // push the buttons to the div
+        $("#buttonDiv").append(b);
+}
+}
 
 
 // Button on-click function
-$('button').on('click', function() {
+$('.button').on('click', function() {
 
+    // Identifies what is being selected
     var topic = $(this).data('type');
     console.log(topic);
 
+    // adds the topic to the queryURL
     var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=dc6zaTOxFJmzC&limit=10";
     console.log(queryURL);
 
@@ -41,24 +46,34 @@ $('button').on('click', function() {
         .done(function(response) {
             console.log(response);
 
+            // emptys out last gifs generated
             $("#gifsAppearHere").empty();
 
+            // loop for ten gifs
             for(i=0; i <numGif; i++) {
-              console.log(response.data[i].images.fixed_height.url);
-              console.log(response.data[i].rating);
+              console.log(response.data[i].images.original_still.url);
+              var results = response.data[i].images.original_still.url
 
+              console.log(response.data[i].rating);
               var rating = response.data[i].rating;
 
               //       start dumping into the HTML
               var gifWell = $("<div>");
 
+              // var gifImage = $("<img>")
+              // gifImage.attr("src", response.data[i].images);
+              // gitImage.attr("data-still", response.data[i].images.)
+
+              // for the rating
+              var p = $("<p>");
+
               gifWell.addClass("well");
               gifWell.attr("id", "gifWell-" + i);
               $("#gifsAppearHere").append(gifWell);
 
+              // add in the gif, followed by the rating
               $("#gifWell-" + i).append("<p>" + "Rating: " + rating);
-              $("#gifWell-" + i).append("<img src=" + response.data[i].images.fixed_height.url + ">");
-
+              $("#gifWell-" + i).append("<img src=" + response.data[i].images.original_still.url + ">");
             }
       })
 })
@@ -82,14 +97,16 @@ $("#runSearch").on("click", function(){
       console.log(topics);
 
           // push the new buttons to the div
-          b.addClass('btn-style');
+          b.addClass('letter');
           b.attr('data-type', topics[i]);
           b.text(topics[i]);
           $("#buttonDiv").append(b);
 
       return false;
-    })
+    });
 
+//run buttonMaker
+buttonMaker();
 
 //PSUEDOCODE
 

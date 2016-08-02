@@ -2,7 +2,7 @@
 
 }
 
-.letter {
+.btn-style {
   padding:5px;
   margin: 5px;
 }
@@ -11,7 +11,7 @@
   margin: 20px;
 }
 
-#buttons {
+#buttonDiv {
   padding: 20px;
   margin: 30px;
 }
@@ -20,4 +20,8 @@
   padding: 20px;
   margin: 30px;
   background-color: #e95420;
+}
+
+#gifWell {
+
 }
