@@ -1,5 +1,17 @@
-#searchTerm {
+.panel-body a
+    word-break: break-all;
 
+#searchTerm {
+  width: 500px;
+}
+
+.small {
+  width: 500px;
+}
+
+label {
+  padding-top: 7px;
+  padding-right: 10px;
 }
 
 .btn-style {
@@ -9,19 +21,37 @@
 #searchForm {
   padding:10px;
   margin: 20px;
+  display: block;
 }
 
 #buttonDiv {
   padding: 20px;
   margin: 30px;
+  width: auto;
 }
 
 #gifsAppearHere {
   padding: 20px;
   margin: 30px;
   background-color: #e95420;
+  width: 500px;
 }
 
 #gifWell {
+
+}
+
+.panel {
+  width: auto;
+  padding: 20px;
+  margin: 30px;
+  box-shadow: 10px 10px 5px #ffffff;
+}
+
+h3 {
+  text-align: center;
+}
+
+#runSearch {
 
 }

@@ -13,36 +13,27 @@
   <!-- Font Awesome CSS Icons (For cool glyphicons) -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-	  <!-- Custom Style -->
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!-- Custom Style -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
-
-	<!-- Style to fix the issue of text extending past panel length -->
-	<style>
-		.panel-body a
-		{
-		    word-break:break-all;
-		}
-
-	</style>
 </head>
 <body>
 
 <div class="panel panel-primary">
+		<h3> Select a gif topic or add a custom topic below!</h3>
     <div id="buttonDiv">
     </div>
 </div>
 
     <form role="form" id="searchForm">
       <div class="form-group">
-        <label for="search">Enter a topic:</label>
-        <input type="text" class="form-control small" id="searchTerm">
+        	<label for="search">Enter a topic:</label>
+        	<input type="text" class="form-control small" id="searchTerm">
       </div>
       <button type="button" class="btn btn-default" id="runSearch">
-        <i class="fa fa-search"></i> Submit New Topic
+        	<i class="fa fa-search"></i> Submit New Topic
       </button>
     </form>
-  </div>
 
   <div id="gifsAppearHere">
   </div>

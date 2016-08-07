@@ -12,19 +12,21 @@ var queryURLBase = "http://api.giphy.com/v1/gifs/search?q=";
 // ===============
 
 //Create buttons from the topics array
-for (var i = 0; i < topics.length; i++) {
-    var b = $('<button>');
-    b.addClass('btn-style');
-    b.addClass('button');
+//var buttonMaker = function() {
+      for (var i = 0; i < topics.length; i++) {
+          var b = $('<button>');
+          b.addClass('btn-style');
+          b.addClass('button');
 
-    var plusTitles = topics[i].split(' ').join('+');
-    b.attr('data-type', plusTitles).append(topics[i]);
+          // if more than one word searh
+          var plusTitles = topics[i].split(' ').join('+');
+          b.attr('data-type', plusTitles).append(topics[i]);
 
-    b.text(topics[i]);
+          b.text(topics[i]);
 
-    // push the buttons to the div
-    $("#buttonDiv").append(b);
-};
+          // push the buttons to the div
+          $("#buttonDiv").append(b);
+          }
 
 
 // Button on-click function
@@ -44,28 +46,40 @@ $('button').on('click', function() {
             $("#gifsAppearHere").empty();
 
             for(i=0; i <numGif; i++) {
-              console.log(response.data[i].images.fixed_height.url);
+              console.log(response.data[i].images.fixed_width_still.url);
               console.log(response.data[i].rating);
 
+              var gifStill = response.data[i].images.fixed_width_still.url
+              var gifURL = response.data[i].images.fixed_width.url
               var rating = response.data[i].rating;
 
               //       start dumping into the HTML
               var gifWell = $("<div>");
+              var gifImg = $("<img>");
+
+              gifImg.attr("src", response.data[i].images.fixed_width_still.url);
+              gifImg.attr("data-still", response.data[i].images.fixed_width_still.url);
+              gifImg.attr("data-active", response.data[i].images.fixed_width.url);
 
               gifWell.addClass("well");
               gifWell.attr("id", "gifWell-" + i);
+              gifWell.addClass("well");
               $("#gifsAppearHere").append(gifWell);
 
               $("#gifWell-" + i).append("<p>" + "Rating: " + rating);
-              $("#gifWell-" + i).append("<img src=" + response.data[i].images.fixed_height.url + ">");
+              $("#gifWell-" + i).append(gifStill);
+              //$("#gifWell-" + i).append("<img src=" + gifURL + ">");
 
             }
       })
 })
 
+$("img").on("click", function(e) {
+      //var gifURL = response.data[i].images.fixed_width.url
+      console.log("here");
+      //$(img).attr("src", "gifURL");
 
-
-    // path to the gif: data.images.fixed_height;
+});
 
 // MAIN PROCESSES
 //===============
@@ -80,8 +94,9 @@ $("#runSearch").on("click", function(){
       //push users term into array
       topics.push(searchTerm);
       console.log(topics);
+      //buttonMaker();
 
-          // push the new buttons to the div
+        //  push the new buttons to the div
           b.addClass('btn-style');
           b.attr('data-type', topics[i]);
           b.text(topics[i]);
@@ -90,7 +105,7 @@ $("#runSearch").on("click", function(){
       return false;
     })
 
-
+//buttonMaker();
 //PSUEDOCODE
 
 // 1. Turn array of topics into buttons
