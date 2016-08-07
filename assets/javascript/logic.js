@@ -67,7 +67,7 @@ $('button').on('click', function() {
               $("#gifsAppearHere").append(gifWell);
 
               $("#gifWell-" + i).append("<p>" + "Rating: " + rating);
-              $("#gifWell-" + i).append(gifStill);
+              $("#gifWell-" + i).append("<img src=" + gifStill + ">");
               //$("#gifWell-" + i).append("<img src=" + gifURL + ">");
 
             }
